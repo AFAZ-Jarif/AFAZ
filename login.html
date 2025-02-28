@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url('https://miro.medium.com/v2/resize:fit:1400/1*flHSvAWEYJ9XmKfGlA0P0A.jpeg') no-repeat center center/cover;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 350px;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .logout-btn {
+            width: 100%;
+            padding: 10px;
+            background: red;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function logout() {
+            // Session Clear
+            localStorage.removeItem("loggedIn");
+
+            // Redirect to Login Page
+            window.location.href = 'login.html';
+        }
+
+        // যদি user login না করে logout.html-এ আসে, তাহলে তাকে সরাসরি login page-এ পাঠানো হবে
+        if (!localStorage.getItem("loggedIn")) {
+            window.location.href = 'login.html';
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Are you sure you want to logout?</h2>
+        <button class="logout-btn" onclick="logout()">LOGOUT</button>
+    </div>
+</body>
+</html>

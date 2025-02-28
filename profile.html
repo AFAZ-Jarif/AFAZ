@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            height: 100vh;
+            background: url('https://your-image-link-here.jpg') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .navbar {
+            width: 100%;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        .logo {
+            width: 120px;
+            margin-left: 20px;
+        }
+        .nav-links {
+            margin-right: 20px;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+        .profile-container {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 15px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .profile-container img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        .profile-container h2 {
+            margin-bottom: 10px;
+        }
+        .profile-container p {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .edit-btn, .save-btn {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #6e3aff, #ff4fd8);
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        .edit-btn {
+            background: #ff9f00;
+        }
+        .edit-btn:hover, .save-btn:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <img src="phenix_logo.png" alt="PHENIX ESPORTS" class="logo">
+        <div class="nav-links">
+            <a href="home.html">Home</a>
+            <a href="freefire.html">Free Fire</a>
+            <a href="logout.html">Logout</a>
+        </div>
+    </div>
+    
+    <div class="profile-container">
+        <!-- Display Profile Picture -->
+        <img src="https://via.placeholder.com/100" alt="Profile Picture"> <!-- Replace with your image link -->
+        
+        <!-- Editable User Information -->
+        <h2 id="name-display">AFAZ</h2>
+        <p><strong>Username:</strong> <span id="username-display">PHENIX LASER</span></p>
+        <p><strong>Email:</strong> <span id="email-display">afaz@example.com</span></p>
+        
+        <!-- Editable Form for Profile Information -->
+        <div id="edit-form" style="display:none;">
+            <input type="text" id="edit-name" placeholder="Enter your name" value="AFAZ">
+            <input type="text" id="edit-username" placeholder="Enter your username" value="PHENIX LASER">
+            <input type="email" id="edit-email" placeholder="Enter your email" value="afaz@example.com">
+        </div>
+
+        <!-- Buttons to Edit and Save -->
+        <button class="edit-btn" onclick="toggleEditForm()">Edit Profile</button>
+        <button class="save-btn" id="save-btn" style="display:none;" onclick="saveProfile()">Save Changes</button>
+    </div>
+
+    <script>
+        function toggleEditForm() {
+            const editForm = document.getElementById("edit-form");
+            const editBtn = document.querySelector(".edit-btn");
+            const saveBtn = document.getElementById("save-btn");
+
+            if (editForm.style.display === "none") {
+                editForm.style.display = "block";
+                editBtn.style.display = "none";
+                saveBtn.style.display = "inline-block";
+            } else {
+                editForm.style.display = "none";
+                editBtn.style.display = "inline-block";
+                saveBtn.style.display = "none";
+            }
+        }
+
+        function saveProfile() {
+            const newName = document.getElementById("edit-name").value;
+            const newUsername = document.getElementById("edit-username").value;
+            const newEmail = document.getElementById("edit-email").value;
+
+            // Update the display with the new values
+            document.getElementById("name-display").innerText = newName;
+            document.getElementById("username-display").innerText = newUsername;
+            document.getElementById("email-display").innerText = newEmail;
+
+            // Hide the edit form and show the updated profile
+            toggleEditForm();
+            
+            // Optionally, save the changes in localStorage or to a backend server
+            // localStorage.setItem('profileName', newName);
+            // localStorage.setItem('profileUsername', newUsername);
+            // localStorage.setItem('profileEmail', newEmail);
+        }
+    </script>
+   
+</body>
+</html>
